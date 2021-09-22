@@ -5,21 +5,14 @@ import Image from "next/image"
 import { useSelector } from "react-redux"
 import { selectItems, selectTotal } from "../slices/basketSlice";
 import { useSession } from "next-auth/client"
-const stripePromise = loadStripe(process.env.stripe_public_key)
 
 const Checkout = () => {
     const items = useSelector(selectItems);
     const total = useSelector(selectTotal);
     const [session] = useSession();
 
-    const createCheckoutSession = () => {
-        const stripe = await stripePromise;
-
-        // Call the backend to create a session
-    }
-
     return (
-        <div className="bg-shades h-screen">
+        <div className="bg-shades">
             <Header />
 
             <main className="lg:flex max-w-screen-2xl mx-auto ">
@@ -60,7 +53,6 @@ const Checkout = () => {
                             </h2>
                             <button
                                 role="link"
-                                onClick={createCheckoutSession}
                                 disabled={!session} className={`button mt-2 ${!session && "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
                                 {!session ? "Sign in to checkout" : "Proceed to checkout"}
                             </button>

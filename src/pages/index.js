@@ -7,7 +7,7 @@ import ProductFeed from "../components/ProductFeed";
 
 export default function Home({ products }) {
   return (
-    <div className="bg-shades ">
+    <div className="bg-shades">
       <Head>
         <title>Bliss</title>
       </Head>
